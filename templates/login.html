@@ -1,0 +1,69 @@
+{% if msg_erro %}
+<div id="error-message" style="display: none;">{{ msg_erro }}</div>
+<script>
+    // Seleciona o elemento com a mensagem de erro
+    const errorMessageElement = document.getElementById('error-message');
+  
+    // Verifica se o elemento existe e se tem conteúdo
+    if (errorMessageElement && errorMessageElement.textContent) {
+      // Exibe a mensagem em um alerta
+      window.alert(errorMessageElement.textContent);
+    }
+  </script>
+{% endif %}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="static/style_login.css">
+    <title>Página de Login</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-in">
+            <form action="/login" method="post" class="needs-validation" novalidate>
+        
+                <span>Use seu Email e Senha</span>
+                <input type="email" placeholder="Email" name="email">
+                
+                <input type="password" placeholder="Password" name="senha">
+                
+                <button type="submit" class="btn btn-primary w-100" id="btn">Acessar</button>
+                <p></p>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-right">
+                    <h1>Bem-vindo!</h1>
+                    <p>Faça login para desfrutar do site</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+          'use strict'
+        
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          const forms = document.querySelectorAll('.needs-validation')
+        
+          // Loop over them and prevent submission
+          Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+        
+              form.classList.add('was-validated')
+            }, false)
+          })
+        })()</script>
+</body>

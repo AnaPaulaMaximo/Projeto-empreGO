@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Faça upload do seu currículo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+<div class="upload-container">
+    <h2>Envie seu arquivo</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="curriculo_arquivo"  accept="application/pdf">
+        <button type="submit">Enviar</button>
+    </form>
+    {% if msg %}
+    <div class="mensagem">
+        <p>{{ msg }}</p>
+    </div>
+    {% endif %}
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

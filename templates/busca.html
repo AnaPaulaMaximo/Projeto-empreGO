@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Painel de Vagas{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% if termo %}
+                <h1 class="card-title text-primary m-4">Resultados para: <strong>{{ termo }}</strong></h1>
+                {% if vagas %}
+                    <ul>
+                        {% for vaga in vagas %}
+                            <div class="alert alert-success" role="alert" style=" background-color: #e1b6f5 !important;">
+                                <h4><a href="/sobre_vaga/{{ vaga.id_vaga }}">{{ vaga.titulo }}</a></h4>
+                                <h6>Empresa: {{ vaga['nome_empresa'] }}</h4>
+                                <p class="card-subtitle mb-2 text-muted">
+                                    {{ vaga['descricao'][:150] }}{% if vaga['descricao']|length > 150 %}...{% endif %}
+                                    <br>
+                                </p>
+                                
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Nenhuma vaga encontrada.</p>
+                {% endif %}
+            {% else %}
+                <h1 class="text-danger">Por favor, forneça um termo para pesquisa.</h1>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Cadastrar Empresa{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Cadastrar Nova Empresa</h1>
+
+            {% if msg_erro %}
+                <div class="alert alert-danger" role="alert">
+                    {{ msg_erro }}
+                </div>
+            {% endif %}
+
+            <form action="/cadastrar_empresa" method="post" class="needs-validation" novalidate>
+                
+                <div class="mb-3">
+                    <label for="nome_empresa" class="form-label">Nome Fantasia da Empresa</label>
+                    <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" required>
+                </div>
+                <div class="valid-feedback">
+                    Resposta válida
+                  </div>
+                <div class="invalid-feedback">
+                    Porfavor adicione o nome da empresa
+                  </div>
+
+                <div class="mb-3">
+                    <label for="cnpj" class="form-label">CNPJ</label>
+                    <input type="number" min="0" class="form-control" id="cnpj" name="cnpj" maxlength="14" placeholder="Somente números" required>
+                </div>
+                <div class="valid-feedback">
+                    Resposta válida
+                  </div>
+                <div class="invalid-feedback">
+                    Porfavor adicione o CNPJ da empresa
+                  </div>
+                <div class="mb-3">
+                    <label for="telefone" class="form-label">Telefone de contato</label>
+                    <input type="number" min="0"  class="form-control" id="telefone" name="telefone" maxlength="11" placeholder="Somente números" required>
+                </div>
+                <div class="valid-feedback">
+                    Resposta válida
+                  </div>
+                <div class="invalid-feedback">
+                    Porfavor adicione o telefone de contato da empresa
+                  </div>
+                <h2>Informações para acesso da plataforma</h2>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="valid-feedback">
+                    Resposta válida
+                  </div>
+                <div class="invalid-feedback">
+                    Porfavor adicione o email da empresa
+                  </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" required>
+                </div>
+                <div class="valid-feedback">
+                    Resposta válida
+                  </div>
+                <div class="invalid-feedback">
+                    Porfavor adicione a senha de acesso para o login da empresa
+                  </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      'use strict'
+    
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+    
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+    
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()</script>
+{% endblock %}
